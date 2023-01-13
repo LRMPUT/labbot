@@ -1,0 +1,8 @@
+prefix=/usr/local
+
+Name: labbot
+Description: Description of labbot
+Version: 0.0.0
+Cflags: -I/usr/local/include
+Libs: -L/usr/local/lib -llabbot -lnodelet
+Requires: message_runtime nodelet

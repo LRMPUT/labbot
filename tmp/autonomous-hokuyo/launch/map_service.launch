@@ -1,0 +1,44 @@
+<launch>
+
+<!--Labbot launch-->
+
+<include file="$(find labbot)/launch/labbot.launch"/>
+
+<!-- Tf publication linking base of the robot with the camera link-->
+ <node pkg="tf" type="static_transform_publisher" name="base_to_kinect_broadcaster" args="0.1 0 0.615 0 0 0 labbot_base_link camera_link 100" />
+
+
+<!-- openni_launch  -->
+
+<include file="$(find openni_launch)/launch/openni.launch">
+
+	<!--setting the openni parameters-->
+
+	<arg name="depth_registration" value="true"/>
+</include>
+
+
+
+
+
+<!-- rtabmap launch -->
+
+<include file="$(find rtabmap_ros)/launch/rgbd_mapping.launch">
+	<arg name="rviz" value="true"/>
+	<arg name="rtabmapviz" value="false"/>
+	<arg name="rtabmap_args" value="--delete_db_on_start"/>
+
+	<!-- adding external odometry from topic labbot_odometry-->
+
+	<arg name="visual_odometry" value="false"/>
+	<arg name="odom_topic" value="/labbot_odometry"/>
+
+</include>
+
+
+
+<!--map_service node -->
+
+<!--node pkg="map_service" type="map_service" name="map_service" respawn="true" output="screen"/-->
+
+</launch>

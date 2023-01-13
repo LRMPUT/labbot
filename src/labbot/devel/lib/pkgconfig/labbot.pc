@@ -1,0 +1,8 @@
+prefix=/home/labbot/ROS-labbot/labbot_ws/src/labbot/devel
+
+Name: labbot
+Description: Description of labbot
+Version: 0.0.0
+Cflags: -I/home/labbot/ROS-labbot/labbot_ws/src/labbot/devel/include
+Libs: -L/home/labbot/ROS-labbot/labbot_ws/src/labbot/devel/lib -llabbot -lnodelet
+Requires: message_runtime nodelet
