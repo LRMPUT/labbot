@@ -1,7 +1,8 @@
 A ROS2 workspace for labbot robot.
 
 
-How to install ROS2 TurtleBot3 packages from sources? Based on https://ros2-industrial-workshop.readthedocs.io/en/latest/_source/navigation/ROS2-Turtlebot.html
+### How to install ROS2 TurtleBot3 packages from sources? 
+Based on https://ros2-industrial-workshop.readthedocs.io/en/latest/_source/navigation/ROS2-Turtlebot.html
 
 1. Download turtlebot3.repos into workspace directory (it should containt at least `src` directory):
 
@@ -41,3 +42,10 @@ colcon build --symlink-install
 ```
 
 thanks to `--symlink-install` changes made in python nodes will take effect without rebuilding the workspace. 
+
+### Odometry
+Migration from http://wiki.ros.org/navigation/Tutorials/RobotSetup/Odom
+to https://navigation.ros.org/setup_guides/odom/setup_odom.html
+
+- use `ros2_control`:
+"An alternative to manually publishing this information that we recommend is through the ros2_control framework. The ros2_control framework contains various packages for real-time control of robots in ROS 2."
