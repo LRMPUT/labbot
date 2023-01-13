@@ -1,1 +1,1 @@
-A ROS workspace for labbot robot.
+A ROS2 workspace for labbot robot.
