@@ -1,5 +1,5 @@
 # labbot_ws
-Repository containing complete ROS2 workspace for LabBot robot as a part of Master’s degree thesis at year 2025
+Repository branch containing complete ROS2 workspace for LabBot robot as a part of Master’s degree thesis at year 2025
 
 Title: Implementation of the Labbot mobile robot controller in the ROS2 system
 
@@ -48,6 +48,14 @@ https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debs.html
 After ROS2 installation it is worth to source ROS2 environment permanently:  
 ```
 echo "source /opt/ros/jazzy/setup.bash" >> ~/.bashrc
+```
+
+# ROS2 workspace preparation
+In order to provide seamless workspace integration it is recommended to clone this branch into ``/home/user-name/`` and rename the root folder:
+```
+git clone https://github.com/LRMPUT/labbot  --branch ROS2-Jazzy
+mv labbot labbot_ws
+cd labbot_ws
 ```
 
 # Camera libuvc installation
