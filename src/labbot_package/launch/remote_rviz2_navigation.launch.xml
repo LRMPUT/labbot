@@ -1,0 +1,4 @@
+<launch> 
+    <!-- start Rviz2 with modified Nav2 view -->
+    <node pkg="rviz2" exec="rviz2" name="rviz2" output="screen" args="-d $(find-pkg-share labbot_package)/rviz2/rviz2_nav2.rviz"/>
+</launch>

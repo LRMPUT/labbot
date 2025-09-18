@@ -1,0 +1,13 @@
+
+<launch>
+
+<!-- import teleop_config and prepare variable for topic remap -->
+  <arg name="params_file" default="$(find-pkg-share labbot_package)/config/teleop_config.yaml"/>
+  <arg name="cmd_vel_out" default="/cmd_vel"/>
+
+  <node pkg="teleop_twist_joy" exec="teleop_node" name="teleop_twist_joy" output="screen">
+    <param from="$(var params_file)"/>
+    <!-- topic remap -->
+    <remap from="cmd_vel" to="$(var cmd_vel_out)"/>
+  </node>
+</launch>

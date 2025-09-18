@@ -1,0 +1,15 @@
+<launch>
+    <arg name="dev" default="0"/>
+    <arg name="deadzone" default="0.05"/>
+    <arg name="autorepeat_rate" default="20.0"/>
+
+    <!-- start simple joy node -->
+    <node pkg="joy" exec="joy_node" name="joy_node" output="screen">
+        <param name="device_id" value="$(var dev)"/>
+        <param name="deadzone" value="$(var deadzone)"/>
+        <param name="autorepeat_rate" value="$(var autorepeat_rate)"/>
+    </node>
+
+    <!-- start Rviz2 with SLAM visualization -->
+    <node pkg="rviz2" exec="rviz2" name="rviz2" output="screen" args="-d $(find-pkg-share labbot_package)/rviz2/rviz2_teleop.rviz"/>
+</launch>

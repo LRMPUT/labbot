@@ -1,0 +1,7 @@
+labbot_interfaces/ControllerSetting controller_setting
+
+---
+bool success
+string<=64 message
+
+labbot_interfaces/ControllerSetting controller_setting_assigned

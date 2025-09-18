@@ -1,0 +1,6 @@
+uint32 controller_id
+---
+bool success
+string<=64 message
+
+labbot_interfaces/ControllerSetting controller_setting

@@ -1,0 +1,25 @@
+# teleop_config.yaml
+/**:
+  ros__parameters:
+    require_enable_button: false
+    enable_button: -1
+
+    axis_linear:
+      x: 1
+    axis_angular:
+      yaw: 0
+
+    scale_linear:
+      x: 0.125
+    scale_angular:
+      yaw: 0.929375
+
+    enable_turbo_button: 5
+    scale_linear_turbo:
+      x: 0.500
+    scale_angular_turbo:
+      yaw: 1.85875
+
+    publish_frequency: 10.0
+    deadzone: 0.1
+    autorepeat_rate: 1.0

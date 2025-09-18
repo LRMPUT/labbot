@@ -1,0 +1,30 @@
+<launch>
+  <include file="$(find-pkg-share astra_camera)/launch/astra.launch.xml"> </include>
+  
+  <arg name="depth_topic" default="/camera/depth/image_raw"/>
+  <arg name="camera_info_topic" default="/camera/depth/camera_info"/>
+  <arg name="scan_topic" default="/scan"/>
+  <arg name="output_frame" default="scan_link"/>
+  <arg name="scan_height" default="2"/>
+  <arg name="range_min" default="0.60"/>
+  <arg name="range_max" default="8.0"/>
+  <arg name="scan_time" default="0.033"/>
+
+  <node
+    pkg="depthimage_to_laserscan"
+    exec="depthimage_to_laserscan_node"
+    name="depthimage_to_laserscan"
+    output="screen"
+    emulate_tty="true">
+
+    <remap from="depth" to="$(var depth_topic)"/>
+    <remap from="depth_camera_info" to="$(var camera_info_topic)"/>
+    <remap from="scan" to="$(var scan_topic)"/>
+
+    <param name="scan_time" value="$(var scan_time)"/>
+    <param name="output_frame" value="$(var output_frame)"/>
+    <param name="scan_height" value="$(var scan_height)"/>
+    <param name="range_min" value="$(var range_min)"/>
+    <param name="range_max" value="$(var range_max)"/>
+  </node>
+</launch>

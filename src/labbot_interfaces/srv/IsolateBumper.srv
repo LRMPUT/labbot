@@ -1,0 +1,5 @@
+uint32 bumper_id
+bool active
+---
+bool success
+string message

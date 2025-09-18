@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+
+<robot name="labbot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:include filename="labbot_properties.xacro" />
+    <xacro:include filename="labbot_macros.xacro" />
+
+    <xacro:property name="wheel_diameter" value="0.13575" />
+    <xacro:property name="wheel_width" value="0.02" />
+    <xacro:property name="wheel_axle" value="0.27375" />
+
+    <xacro:property name="swivel_diameter" value="0.035" />
+
+    <xacro:wheel_link_macro
+        prefix="wheel_left" 
+        diameter="${wheel_diameter}"
+        width="${wheel_width}"
+        material="black" />
+
+    <xacro:wheel_link_macro
+        prefix="wheel_right" 
+        diameter="${wheel_diameter}"
+        width="${wheel_width}"
+        material="black" />
+
+    <link name="base_footprint" />
+
+    <link name="base_link">
+        <visual>
+            <geometry>
+                <mesh filename="package://labbot_package/urdf/meshes/labbot_assembly_main_low.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <material name="orange" />
+        </visual>
+    </link>
+
+    <link name="details_link">
+        <visual>
+            <geometry>
+                <mesh filename="package://labbot_package/urdf/meshes/labbot_assembly_detail_low.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <material name="black" />
+        </visual>
+    </link>
+
+    <link name="swivel_link">
+        <visual>
+            <geometry>
+                <sphere radius="${swivel_diameter}" />
+            </geometry>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <material name="black" />
+        </visual>
+    </link>
+
+    <link name="camera_link"> </link>
+
+    <link name="scan_link" />
+
+    <joint name="base_joint" type="fixed">
+        <parent link="base_footprint" />
+        <child link="base_link" />
+        <origin xyz="0 0 ${wheel_diameter / 2.0}" rpy="0 0 0" />
+    </joint>
+
+    <joint name="details_joint" type="fixed">
+        <parent link="base_link" />
+        <child link="details_link" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+    </joint>
+
+    <joint name="motor_left" type="continuous">
+        <parent link="base_link" />
+        <child link="wheel_left_link" />
+        <origin xyz="0 ${-wheel_axle / 2.0} 0" rpy="0 0 0" />
+        <axis xyz="0 1 0" />
+    </joint>
+
+    <joint name="motor_right" type="continuous">
+        <parent link="base_link" />
+        <child link="wheel_right_link" />
+        <origin xyz="0 ${wheel_axle / 2.0} 0" rpy="0 0 0" />
+        <axis xyz="0 1 0" />
+    </joint>
+
+    <joint name="base_swivel_joint" type="fixed">
+        <parent link="base_link" />
+        <child link="swivel_link" />
+        <origin xyz="-0.155 0 ${-wheel_diameter / 2.0 + swivel_diameter}" rpy="0 0 0" />
+    </joint>
+
+    <joint name="camera_joint" type="fixed">
+        <parent link="base_link" />
+        <child link="camera_link" />
+        <origin xyz="-0.160 0 0.525" rpy="0 0 ${2.5 * pi / 180}" />
+    </joint>
+
+    <joint name="scan_joint" type="fixed">
+        <parent link="base_link" />
+        <child link="scan_link" />
+        <origin xyz="-0.160 0 0.525" rpy="0 0 ${2.5 * pi / 180.0}" />
+    </joint>
+
+</robot>

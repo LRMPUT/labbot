@@ -1,0 +1,19 @@
+<launch>
+  <arg name="use_sim_time" default="false"/>
+
+<!-- import prepared nav2_config -->
+  <arg name="nav2_params" default="$(find-pkg-share labbot_package)/config/nav2_config.yaml"/>
+  <arg name="log_level" default="info"/>
+
+<!-- enable autostart and disable unnecessary components -->
+  <include file="$(find-pkg-share nav2_bringup)/launch/navigation_launch.py">
+    <arg name="use_sim_time" value="$(var use_sim_time)"/>
+    <arg name="params_file" value="$(var nav2_params)"/>
+    <arg name="autostart" value="true"/>
+    <arg name="use_namespace" value="false"/>
+    <arg name="log_level" value="$(var log_level)"/>
+    <arg name="use_collision_monitor" value="False"/>
+    <arg name="use_smoother" value="False"/>
+    <arg name="use_docking_server" value="False"/>
+  </include>
+</launch>
