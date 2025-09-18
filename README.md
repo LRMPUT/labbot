@@ -1,4 +1,4 @@
-# labbot_ws
+# labbot
 Repository branch containing complete ROS2 workspace for LabBot robot as a part of Master’s degree thesis at year 2025
 
 Title: Implementation of the Labbot mobile robot controller in the ROS2 system
