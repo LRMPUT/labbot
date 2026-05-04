@@ -15,7 +15,7 @@ The topics used in micro-ROS robot driver are described as follows:
 - **/labbot/controller_state** – `labbot_interfaces/msg/ControllerStateAray.msg`, published, array of LabBot PID controllers state described in **labbot_interfaces** package
 - **/labbot/mcu_temperature** – `std_msgs/msg/Float32.msg`, published current MCU temperature
 - **/labbot/motor_state** – `sensor_msgs/msg/JointState.msg`, published, message containing array of motor identification, position, speed and current, used in **robot_state_publisher**  
-- **/odom** – `nav_msgs/msg/Odometry.msg`, published, odometry message contaning **odom-base_footprint** relations and estimated position, orientation and robot velocities   
+- **/odom** – `nav_msgs/msg/Odometry.msg`, published, odometry message containing **odom-base_footprint** relations and estimated position, orientation and robot velocities   
 
 # LabBot driver services
 Services prepared for robot hardware interaction and their call examples are described as follows:
@@ -80,17 +80,17 @@ sudo apt update
 sudo apt install ros-jazzy-slam-toolbox
 ```
 # Building the workspace
-Inside workspace root folder use colcon build tool and source the installation (remember to change "directory_ws" in the command:
+Inside the workspace root folder, use `colcon build` tool and source the installation (remember to change "directory_ws" in the command):
 ```
 colcon build
 echo "source /home/$USER/directory_ws/install/setup.sh" >> ~/.bashrc
 ```
 # Logging to LabBot computer
-In order to connect to LabBot computer firstly remote station must be connected to **jerry_hotspot** network:
-- SSID: **jerry_hotspot**
-- PASS: **lrm_jerry**
+In order to connect to LabBot computer, firstly remote station must be connected to **jerry-hotspot** network:
+- SSID: **jerry-hotspot**
+- PASS: **lrm-jerry**
 
-To log remotelly to LabBot use SSH tool and the following:
+To log remotely to LabBot use SSH tool and the following:
 - IPV4: **10.42.0.1**
 - USER: **jerry**
 - PASS: **jerry**
@@ -131,9 +131,9 @@ To start Rviz2 config containing necessary **Nav2** controllers use:
 ros2 launch ros2 launch remote_rviz2_navigation.launch.xml  # started on remote station
 ```
 # Extending LabBot startup functionality
-In order to provide automatic startup of choosen launch files Ubuntu **systemctl** can be used. Simple usage will be described using **local_start_drivers.launch.xml**, that is started with LabBot computer system. 
+In order to provide automatic startup of chosen launch files Ubuntu **systemctl** can be used. Simple usage will be described using **local_start_drivers.launch.xml**, which is started with LabBot computer system. 
 
-To create necessary system service firstly text file should be created.
+To create necessary system service, a text file should be created first.
 ```
 sudo vim /etc/systemd/system/labbot_drivers.service
 ```
