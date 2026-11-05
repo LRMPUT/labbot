@@ -1,0 +1,24 @@
+<launch>
+<!-- Republishes camera images in compressed form for remote viewing over WiFi.
+     Raw images (~27 MB/s color, ~18 MB/s depth) do not fit through the robot hotspot. -->
+  <arg name="color_topic" default="/camera/color/image_raw"/>
+  <arg name="depth_topic" default="/camera/depth/image_raw"/>
+  <arg name="enable_color_compression" default="true"/>
+  <arg name="enable_depth_compression" default="true"/>
+
+  <node if="$(var enable_color_compression)"
+    pkg="image_transport" exec="republish" name="color_republisher" output="screen">
+    <param name="in_transport" value="raw"/>
+    <param name="out_transport" value="compressed"/>
+    <remap from="in" to="$(var color_topic)"/>
+    <remap from="out/compressed" to="$(var color_topic)/compressed"/>
+  </node>
+
+  <node if="$(var enable_depth_compression)"
+    pkg="image_transport" exec="republish" name="depth_republisher" output="screen">
+    <param name="in_transport" value="raw"/>
+    <param name="out_transport" value="compressedDepth"/>
+    <remap from="in" to="$(var depth_topic)"/>
+    <remap from="out/compressedDepth" to="$(var depth_topic)/compressedDepth"/>
+  </node>
+</launch>

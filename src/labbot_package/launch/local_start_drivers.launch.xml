@@ -73,4 +73,6 @@
     <param name="range_min" value="$(var range_min)"/>
     <param name="range_max" value="$(var range_max)"/>
   </node>
+
+  <include file="$(find-pkg-share labbot_package)/launch/local_start_image_compression.launch.xml"/>
 </launch>
